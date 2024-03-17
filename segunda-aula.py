@@ -33,12 +33,13 @@ lista_cadastro[3] = [20, 19]
 lista_cadastro[4] = ["BA", "SP"]
 controller = 0
 while(controller != 9):
-    controller = int(input("\nMENU PRINCIPAL\n\n1- Pesquisar Nome \n2- Inserir Nome \n3- Excluir Nome\n9- Sair \n-> "))
+    controller = int(input("\nMENU PRINCIPAL\n\n1- Pesquisar Nome \n2- Fazer Cadastro \n3- Excluir Nome\n9- Sair \n-> "))
     if(controller == 1):
         nome = input("\nDigite o nome que deseja pesquisa:\n-> ")
-        for elemento in lista_cadastro[0]:
-            if(nome == elemento):
-                print("Existe na lista")
+        if(nome in lista_cadastro[0]):
+            print("Existe na lista")
+        else:
+            print("Não existe na lista")
     elif(controller == 2):
         nome = input("\nQual nome deseja adicionar à lista?\n-> ")
         lista_cadastro[0].append(nome)
@@ -53,14 +54,19 @@ while(controller != 9):
         print(lista_cadastro)
     elif(controller == 3):
         remover_nome = input("\nDigite o nome que deseja remover:\n-> ")
-        for elemento in lista_cadastro[0]:
-            if(remover_nome == elemento):
-                lista_cadastro[0].remove(elemento)
-                print(lista_cadastro)
+        if(remover_nome in lista_cadastro[0]):
+            indice = lista_cadastro[0].index(remover_nome)
+            lista_cadastro[0].remove(lista_cadastro[0][indice])
+            lista_cadastro[1].remove(lista_cadastro[1][indice])
+            lista_cadastro[2].remove(lista_cadastro[2][indice])
+            lista_cadastro[3].remove(lista_cadastro[3][indice])
+            lista_cadastro[4].remove(lista_cadastro[4][indice])
+            print(lista_cadastro)
+        else:
+            print("Nome não encontrado")
     elif(controller != 1 and controller != 2 and controller != 3 and controller != 9):
         print("Comando Inválido!")
     else:
+        print("Programa finalizado!")
         controller == 9
-                
-        
 
